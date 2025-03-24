@@ -4,11 +4,15 @@ import WebTorrent from 'webtorrent';
 import multer from 'multer';
 import fs, { link } from 'fs';
 import mongoose  from 'mongoose';
+import dotenv from 'dotenv';
+import path from "path";
 
-mongoose.connect("mongodb+srv://sherekarparimal:rd4bSyWeOOtKqzZi@cluster0.owrzk.mongodb.net/");
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_DB);
 
 const User = mongoose.model('User',{ROOMID : Number , PASSWORD : Number , MAGNETLINKS : [{filename : String , link : String}]});
-
+const __dirname = import.meta.dirname;
 const app = new express();
 
 app.use(cors(), express.json() , express.text() , express.static('frontend'));
@@ -40,7 +44,7 @@ async function seedfile(filepath) {
 }
 
 app.get("/wtf",(req,res)=>{
-    res.sendFile("C:/Users/shere/OneDrive/Desktop/WebTorrent/WHATTTHEFILE/WTF/frontend/create_join_room.html");
+    res.sendFile("frontend/create_join_room.html", { root: __dirname });
 });
 
 app.get('/createroom',async (req,res)=>{
