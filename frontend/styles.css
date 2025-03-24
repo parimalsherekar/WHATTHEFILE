@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap');
+@font-face {
+    font-family: "BebasNeue";
+    src: url("BebasNeue.otf");
+}
+
+@font-face {
+    font-family: "Molgan";
+    src: url("molgan/Molgan-Regular.otf");
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-family: "Martel Sans";
+    color: rgb(235, 217, 217);
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
+    background-color:#121212;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.left{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    /* display: flex;
+    align-items: center;
+    justify-content: ; */
+}
+
+.right{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+}
+
+.left-logo{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    font-family: "BebasNeue";
+    /* background-color: red; */
+    color: #49d3d8;
+    font-size: 100px;
+}
+
+ .left-logo:hover{
+    /* color: rgb(255, 49, 49); */
+    transition: all;
+    transition-duration: 1500ms;
+    /* text-shadow: 0 0 5px #FF0000; */
+}
+
+.left-down{
+    height: 50%;
+    width: 100%;
+    display:flex;
+    align-items: start;
+    font-size: 25px;
+    justify-content: center;
+    /* background-color: blue; */
+}
+
+.right{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-card{
+    height: 88%;
+    width: 80%;
+    /* display: flex;
+    justify-content: center;
+    align-content: center; */
+    background-color: #1a2223;
+    border-radius: 10px;
+    box-shadow:100 10 #49d3d8;
+}
+
+.create-room{
+    height: 50%;
+    width: 100%;
+    background-color: transparent;
+    row-gap: 30px;
+}
+
+.join-room{
+    height: 50%;
+    width: 100%;
+    /* background-color: red; */
+}
+
+.c-room{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding-top: 40px;
+    font-family: "Molgan";
+}
+
+.c-inputs{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 30px;
+}
+
+input{
+    height:45px;
+    width:500px;
+    background-color: transparent;
+    font-family:  "Molgan";
+    font-size:18px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #49d3d8;
+}
+
+.c-button{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+button{
+    height: 45px;
+    width: 100px;    
+    border-radius: 5px;
+    border-style: solid;
+    font-family: "Molgan";
+    background-color: transparent;
+    border-color: #49d3d8;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #49d3d8;
+    color: #121212;
+    transition: all;
+    transition-duration: 1000ms;
+}
+
+#spotlight {
+  position: fixed;
+  width: 50px; /* Size of the ball */
+  height: 50px;
+  background-color: rgba(73, 211, 216, 0.6); /* Change color as needed */
+  border-radius: 50%; /* Makes it a circle */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  top: 0;
+  left: 0;
+}
+
+  
