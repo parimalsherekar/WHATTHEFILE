@@ -1,0 +1,112 @@
+/* new.css - Styles specific to the Room Files page */
+
+/* Ensure the body follows your site's color scheme */
+body {
+  background-color: #121212;
+  color: rgb(235, 217, 217);
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar styling */
+.navbar {
+  width: 100%;
+  background-color: #1a2223;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navbar .room-info {
+  font-family: "Molgan", sans-serif;
+  font-size: 18px;
+}
+
+.navbar .room-info .room-id,
+.navbar .room-info .room-password {
+  margin-right: 20px;
+}
+
+/* Main content area */
+.main-content {
+  padding: 40px;
+  padding-top: 50px;
+  text-align: center;
+  font-family: "Martel Sans", sans-serif;
+}
+
+.main-content h1 {
+  margin-bottom: 20px;
+  font-family: "BebasNeue", sans-serif;
+  color: #49d3d8;
+  font-size: 50px;
+}
+
+/* File list styling */
+.file-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 600px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.file-list li {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #1a2223;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.file-list li:hover {
+  background-color: #49d3d8;
+  color: #121212;
+  transition: background-color 0.3s ease;
+}
+
+/* Buttons styling */
+.buttons {
+  margin-top: 30px;
+  align-items: center;
+}
+
+.buttons button,
+.upload-label {
+  font-family: "Molgan", sans-serif;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: 2px solid #49d3d8;
+  background-color: transparent;
+  color: rgb(235, 217, 217);
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+}
+
+.buttons button:hover,
+.upload-label :hover {
+  background-color: #49d3d8;
+  color: #121212;
+  transition: background-color 0.3s ease;
+}
+
+.buttons button:active,
+.upload-label :active {
+  transform: scale(0.98);
+  /* Scaling button to 0.98 to its original size */
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}
+
+.upload-label {
+  cursor: pointer;
+}
+
+#headupload {
+  padding-top: 100px;
+}
