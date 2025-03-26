@@ -1,11 +1,9 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const spotlight = document.getElementById('spotlight');
   
     if (spotlight) {
       document.addEventListener('mousemove', (event) => {
-        const spotlightSize = spotlight.offsetWidth; // Get actual size from CSS
+        const spotlightSize = spotlight.offsetWidth; 
         const halfSize = spotlightSize / 2;
   
         spotlight.style.left = `${event.clientX - halfSize}px`;
@@ -29,9 +27,25 @@ document.getElementById("create-btn").addEventListener("click",async()=>{
       password :pass,
     }
   });
+  const data = await response.json();
+  alert(data);
+});
+
+document.getElementById("upload").addEventListener("click",async(event)=>{
+  const file = event.target.files[0];
+
+  const formData = new FormData();
+  formData.append("file",file);
+
+  const response = await fetch("http://localhost:3000/upload", {
+      method: "POST",
+      headers : {
+          roomid : 1111,
+          password : 1212,
+      },
+      body: formData, 
+  });
 
   const data = await response.json();
-
-  alert(data);
-
-});
+  console.log(data);
+})

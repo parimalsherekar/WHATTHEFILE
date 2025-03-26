@@ -47,26 +47,32 @@ app.get("/wtf",(req,res)=>{
     res.sendFile("frontend/create_join_room.html", { root: __dirname });
 });
 
-app.get('/createroom',async (req,res)=>{
+app.get("/room",(req,res)=>{
+    res.sendFile("frontend/room_page.html", { root: __dirname });
+});
+
+
+app.get('/createroom', async (req, res) => {
     const ROOMID = req.headers.roomid;
     const PASSWORD = req.headers.password;
 
-    console.log("PASSWORD",PASSWORD);
+    console.log("PASSWORD", PASSWORD);
 
-    const newroom = new User({ROOMID : ROOMID , PASSWORD : PASSWORD , MAGNETLINKS : []});
+    const existingRoom = await User.findOne({ ROOMID: ROOMID });
 
-    console.log(newroom);
-
-    if(!(await User.findOne({ROOMID : ROOMID , PASSWORD : PASSWORD}))){
-        newroom.save();
-        res.json({msg : "Created ROOM"});
-    }
-    else{
-        res.json({msg : "ALREADY EXISTS"});
+    if (!existingRoom) {
+        const newroom = new User({ ROOMID, PASSWORD, MAGNETLINKS: [] });
+        await newroom.save();
+        console.log("ROOM CREATED");
+    } else {
+        console.log("ROOM ALREADY EXISTS");
     }
 
+    res.redirect("/room")
 
 });
+
+
 
 app.get("/first", (req, res) => {
     return res.send("Hello world");
@@ -105,6 +111,8 @@ app.get('/showdata',async (req,res)=>{
 
     res.send(room.MAGNETLINKS);
 });
+
+
 
 app.listen(3000, () => {
     console.log("started 3000");
