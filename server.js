@@ -11,7 +11,7 @@ dotenv.config();
 
 mongoose.connect(process.env.MONGO_DB);
 
-const User = mongoose.model('User', { ROOMID: {type : Number, unique : true}, PASSWORD: {type : Number, unique : true}, MAGNETLINKS: [{ filename: String, link: String }] });
+const User = mongoose.model('User', { ROOMID: {type : Number, unique : true}, PASSWORD: {type : Number}, MAGNETLINKS: [{ filename: String, link: String }] });
 const __dirname = import.meta.dirname;
 const app = new express();
 
