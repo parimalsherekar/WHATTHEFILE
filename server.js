@@ -47,19 +47,15 @@ app.get("/wtf",(req,res)=>{
     res.sendFile("frontend/create_join_room.html", { root: __dirname });
 });
 
-app.get("/room",(req,res)=>{
-    res.sendFile("frontend/room_page.html", { root: __dirname });
-});
-
 
 app.get('/createroom', async (req, res) => {
-    const ROOMID = req.headers.roomid;
-    const PASSWORD = req.headers.password;
-
+    const ROOMID = req.query.roomid;
+    const PASSWORD = req.query.password;
+    
     console.log("PASSWORD", PASSWORD);
-
+    
     const existingRoom = await User.findOne({ ROOMID: ROOMID });
-
+    
     if (!existingRoom) {
         const newroom = new User({ ROOMID, PASSWORD, MAGNETLINKS: [] });
         await newroom.save();
@@ -67,9 +63,9 @@ app.get('/createroom', async (req, res) => {
     } else {
         console.log("ROOM ALREADY EXISTS");
     }
-
-    res.redirect("/room")
-
+    
+    res.sendFile("frontend/room_page.html", { root: __dirname });
+    
 });
 
 
