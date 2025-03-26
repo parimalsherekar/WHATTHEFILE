@@ -11,7 +11,7 @@ dotenv.config();
 
 mongoose.connect(process.env.MONGO_DB);
 
-const User = mongoose.model('User', { ROOMID: Number, PASSWORD: Number, MAGNETLINKS: [{ filename: String, link: String }] });
+const User = mongoose.model('User', { ROOMID: {type : Number, unique : true}, PASSWORD: {type : Number, unique : true}, MAGNETLINKS: [{ filename: String, link: String }] });
 const __dirname = import.meta.dirname;
 const app = new express();
 
@@ -66,9 +66,15 @@ app.get('/createroom', async (req, res) => {
     const ROOMID = req.query.roomid;
     const PASSWORD = req.query.password;
 
-    const newroom = new User({ ROOMID, PASSWORD, MAGNETLINKS: [] });
-    await newroom.save();
-    console.log("ROOM CREATED");
+    const existingRoom = await User.findOne({ ROOMID: ROOMID, PASSWORD: PASSWORD});
+
+    if (!existingRoom) {
+        // return res.json({ msg: "NOT FOUND" });
+        const newroom = new User({ ROOMID, PASSWORD, MAGNETLINKS: [] });
+        await newroom.save();
+        console.log("ROOM CREATED");
+    }
+    
 
     res.sendFile("frontend/room_main_page.html", { root: __dirname });
 });

@@ -50,7 +50,7 @@ if (download) {
         
         
         client.add(magnetLink, async (torrent) => {
-            console.log("Downloading:", torrent.name);
+            alert("Downloading:", torrent.name);
             
             const file = torrent.files[0];
             console.log("Filename:", file.name);
@@ -67,7 +67,7 @@ if (download) {
                 }
 
                 await writable.close();
-                console.log("Saved:", file.name);
+                alert("Saved:", file.name);
             } catch (err) {
                 console.error("File save failed:", err);
             }
