@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="new.css">
+    <title>Room Files</title>
+    <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
+    <script src="script2.js" defer></script>
+    
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="room-info">
+            <span id="room-id"></span>
+            <span id="room-password"></span>
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <h1>Choose the file to Download</h1>
+        <div>
+            <label for="files">Enter the file name : </label>
+
+            <select name="files" id="files">
+                
+            </select>
+        </div>
+        <div class="buttons">
+            <button id="download-btn">Download</button>
+
+        <h1 id="headupload">Choose the file to Upload</h1>
+        <div class="buttons">
+            <input type="file" id="upload-btn" hidden>
+            <label for="upload-btn" class="upload-label">Upload</label>
+        </div>
+        
+    </div>
+    
+
+
+    <!-- <script>
+        fetch("http://localhost:3000/api/files")
+            .then(response => response.json())//try by removing it
+            .then(data => {
+                const selecti = document.getElementById("files");
+                data.forEach(file => {
+                    const option = document.createElement("option");
+                    option.textContent = file.name;
+                    option.value = file.name + "myadd";
+                    console.log(file.name);
+                    selecti.appendChild(option);
+                });
+            });
+
+       document.getElementById("download-btn").addEventListener("click", () => {
+                const selectfile = document.getElementById("files");
+                const link = selectfile.value;
+                const x = document.getElementById("check");
+                x.innerHTML = link;
+            })
+    </script> -->
+</body>
+
+</html>
+<!-- now download , upload button functionality remains  -->
