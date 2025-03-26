@@ -21,6 +21,7 @@ if (uploadInput) {
         const formData = new FormData();
         formData.append("file", file);
 
+        alert("File Uploading started : wait a minute");
         const response = await fetch("http://localhost:3000/upload", {
             method: "POST",
             headers: {
@@ -29,8 +30,10 @@ if (uploadInput) {
             },
             body: formData,
         });
-
+        
         const data = await response.json();
+        alert("File Uploaded");
+        location.reload();
         console.log(data);
     });
 }
@@ -67,7 +70,7 @@ if (download) {
                 }
 
                 await writable.close();
-                alert("Saved:", file.name);
+                alert(`Saved : ${file.name}`);
             } catch (err) {
                 console.error("File save failed:", err);
             }
