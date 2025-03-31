@@ -16,8 +16,8 @@ if (spotlight) {
 const createBtn = document.getElementById("create-btn");
 if (createBtn) {
     createBtn.addEventListener("click", async () => {
-        const roomid = document.getElementById("c-roomid").value.trim();
-        const pass = document.getElementById("c-pass").value.trim();
+        const roomid = document.getElementById("c-roomid").value;
+        const pass = document.getElementById("c-pass").value;
 
         if (!roomid || !pass) {
             alert("Enter Room ID and Password!");
