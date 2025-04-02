@@ -25,7 +25,7 @@ if (spotlight) {
 download_card.addEventListener('click', async () => {
     prog.innerHTML = "Connecting to Sender";
 
-    const Response = await fetch("http://192.168.178.135:3000/getlink", {
+    const Response = await fetch("http://whatthefile.onrender.com/getlink", {
         method: "GET",
         headers: {
             roomid: roomid,
