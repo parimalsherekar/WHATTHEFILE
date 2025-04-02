@@ -53,7 +53,7 @@ app.get('/createroom', async (req, res) => {
 });
 
 app.get('/joinroom', async (req, res) => {
-    res.sendFile("frontend/room_main_page.html", { root: __dirname });
+    res.sendFile("frontend/download_page.html", { root: __dirname });
 });
 
 
@@ -101,6 +101,21 @@ app.get('/closeroom',async (req,res)=>{
     catch(err){
         res.json(err);
     }
+});
+
+app.get('/getlink',async(req,res)=>{
+    const roomid = req.headers.roomid;
+    const password = req.headers.password;
+
+    const room = await User.findOne({ROOMID : roomid , PASSWORD : password});
+
+    if(room.MAGNETLINKS.length <= 0){
+        return res.json({msg : "Link Not Hosted Yet"});
+    }
+    else{
+        return res.json({msg : room.MAGNETLINKS[0]});
+    }
+
 });
 
 

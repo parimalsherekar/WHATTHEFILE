@@ -4,6 +4,7 @@ const password = params.get('password');
 
 
 
+
 const inputFile = document.getElementById("input-file");
 
 async function seedfile(file) {
