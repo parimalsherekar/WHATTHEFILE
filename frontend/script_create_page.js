@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (file) {
                 const link = await seedfile(file);
         
-                const Response =await fetch("http://whatthefile.onrender.com/upload",{
+                const Response =await fetch("https://whatthefile.onrender.com/upload",{
                     method : "GET",
                     headers : {
                         roomid : roomid,
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (file) {
                 const link = await seedfile(file);
         
-                const Response =await fetch("http://whatthefile.onrender.com/upload",{
+                const Response =await fetch("https://whatthefile.onrender.com/upload",{
                     method : "GET",
                     headers : {
                         roomid : roomid,

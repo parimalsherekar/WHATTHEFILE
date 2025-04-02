@@ -24,7 +24,7 @@ if (createBtn) {
             return;
         }
 
-        const response = await fetch("http://whatthefile.onrender.com/checkroom", {
+        const response = await fetch("https://whatthefile.onrender.com/checkroom", {
             method: "GET",
             headers: {
                 roomid: roomid,
@@ -53,7 +53,7 @@ if (joinbtn) {
         const roomid = document.getElementById("j-roomid").value;
         const pass = document.getElementById("j-pass").value;
 
-        const response = await fetch("http://whatthefile.onrender.com/checkroom", {
+        const response = await fetch("https://whatthefile.onrender.com/checkroom", {
             method: "GET",
             headers: {
                 roomid: roomid,
