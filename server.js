@@ -49,7 +49,7 @@ app.get('/createroom', async (req, res) => {
         console.log("ROOM CREATED");
     }
     
-    res.sendFile("frontend/host_page.html", { root: __dirname });
+    res.sendFile("frontend/create_page.html", { root: __dirname });
 });
 
 app.get('/joinroom', async (req, res) => {
