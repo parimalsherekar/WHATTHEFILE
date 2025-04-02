@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="styles_download_page.css">
     <script src="script_download.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
     <title>WHATTHEFILE</title>
@@ -11,15 +11,18 @@
 <body>
     <div id="spotlight"></div>
     <div class="container">
-        <div class="nav-bar">
-            <div class="nav-left">
-                <p>WHATTHEFILE</p>
+        
+        <nav class="navbar">
+            <div id=logo>
+              WHATTHEFILE
             </div>
-            <div class="nav-right">
-                <p>RoomID :</p>
-                <p>Password :</p>
+            <div class="room-info">
+              <span class="roomid">Room Id:</span>
+              <span id="rn" class="roomnumber"></span>
+              <span class="roomid">Password:</span>
+              <span id="rp" class="roomnumber"></span>
             </div>
-        </div>
+          </nav>
         <div class="main-page">
             <div id = "dc" class="download-card">
                 <p id = "prog">Click To Download</p>
