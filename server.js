@@ -3,7 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cron from 'node-cron';
-import {decryptJSON } from '../encryption'; 
+import {decryptJSON } from './encryption'; 
 
 
 
