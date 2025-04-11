@@ -1,3 +1,4 @@
+import { encryptJSON } from '../encryption'; 
 
 
 const spotlight = document.getElementById("spotlight");
@@ -24,19 +25,25 @@ if (createBtn) {
             return;
         }
 
+        const cred = {
+            roomid: roomid,
+            password: pass
+        }
+        const token = encryptJSON(cred);
+
         const response = await fetch("https://whatthefile.onrender.com/checkroom", {
-            method: "GET",
+            method: "POST",
             headers: {
-                roomid: roomid,
-                password: pass,
+                token
             }
         });
         const data = await response.json();
         console.log(data);
 
+
         if (data.msg == "NOT FOUND") {
-            console.log("Redirecting to:", `/createroom?roomid=${roomid}&password=${pass}`);
-            window.location.href = `/createroom?roomid=${encodeURIComponent(roomid)}&password=${encodeURIComponent(pass)}`;
+            console.log("Redirecting to:", `/createroom?token=${token}`);
+            window.location.href = `/createroom/${encodeURIComponent(token)}`;
         }
         else {
             console.log("alert showed");
@@ -52,19 +59,25 @@ if (joinbtn) {
     joinbtn.addEventListener("click", async () => {
         const roomid = document.getElementById("j-roomid").value;
         const pass = document.getElementById("j-pass").value;
+        
+        const cred = {
+            roomid: roomid,
+            password: pass
+        }
+        const token = encryptJSON(cred);
 
         const response = await fetch("https://whatthefile.onrender.com/checkroom", {
-            method: "GET",
+            method: "POST",
             headers: {
-                roomid: roomid,
-                password: pass,
+                token
             }
         });
         const data = await response.json();
         console.log(data);
 
+
         if (data.msg == "FOUND") {
-            window.location.href = `/joinroom?roomid=${encodeURIComponent(roomid)}&password=${encodeURIComponent(pass)}`;
+            window.location.href = `/joinroom/${encodeURIComponent(token)}`;
         }
         else {
             console.log("alert showed");

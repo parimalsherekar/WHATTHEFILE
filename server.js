@@ -3,6 +3,8 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cron from 'node-cron';
+import {decryptJSON } from '../encryption'; 
+
 
 
 dotenv.config();
@@ -23,9 +25,12 @@ app.get('/host-page',async(req,res)=>{
     res.sendFile("frontend/host_page.html", { root: __dirname });
 });
 
-app.get("/checkroom", async (req, res) => {
-    const ROOMID = req.headers.roomid;
-    const PASSWORD = req.headers.password;
+app.post("/checkroom", async (req, res) => {
+    const token = req.headers.token;
+    const decryptdata = decryptJSON(token);
+
+    const ROOMID = decryptdata.roomid;
+    const PASSWORD = decryptdata.password;
 
     const existingRoom = await User.findOne({ ROOMID: ROOMID, PASSWORD: PASSWORD});
 
@@ -37,9 +42,12 @@ app.get("/checkroom", async (req, res) => {
     }
 });
 
-app.get('/createroom', async (req, res) => {
-    const ROOMID = req.query.roomid;
-    const PASSWORD = req.query.password;
+app.get('/createroom/:token', async (req, res) => {
+    const token = req.params.token;
+    const decryptdata = decryptJSON(token);
+
+    const ROOMID = decryptdata.roomid;
+    const PASSWORD = decryptdata.password;
 
     const existingRoom = await User.findOne({ ROOMID: ROOMID, PASSWORD: PASSWORD});
     
@@ -104,8 +112,12 @@ app.get('/closeroom',async (req,res)=>{
 });
 
 app.get('/getlink',async(req,res)=>{
-    const roomid = req.headers.roomid;
-    const password = req.headers.password;
+
+    const token = req.headers.token;
+    const decryptdata = decryptJSON(token);
+
+    const roomid = decryptdata.roomid;
+    const password = decryptdata.password;
 
     const room = await User.findOne({ROOMID : roomid , PASSWORD : password});
 
