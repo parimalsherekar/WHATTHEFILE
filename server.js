@@ -15,7 +15,7 @@ const app = new express();
 
 app.use(cors(), express.json(), express.text(), express.static('frontend'));
 
-app.get("/wtf", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile("frontend/create_join_room.html", { root: __dirname });
 });
 
